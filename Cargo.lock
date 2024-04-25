@@ -1080,19 +1080,13 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7517c040926d7b02b111884aa089177db80878533127f7c1b480d852c5fb4112"
 
 [[package]]
-name = "display-interface"
-version = "0.5.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7ba2aab1ef3793e6f7804162debb5ac5edb93b3d650fbcc5aeb72fcd0e6c03a0"
-
-[[package]]
 name = "display-interface-spi"
 version = "0.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "489378ad054862146fbd1f09f51d585ccbe4bd1e2feadcda2a13ac33f840e1a5"
 dependencies = [
  "byte-slice-cast",
- "display-interface 0.4.1",
+ "display-interface",
  "embedded-hal 0.2.7",
 ]
 
@@ -2309,10 +2303,10 @@ checksum = "830d08ce1d1d941e6b30645f1a0eb5643013d835ce3779a5fc208261dbe10f55"
 name = "lcd-demo"
 version = "0.1.0"
 dependencies = [
- "display-interface 0.5.0",
+ "display-interface",
  "display-interface-spi",
  "embedded-graphics",
- "embedded-hal 1.0.0",
+ "embedded-hal 0.2.7",
  "mipidsi",
  "rppal",
  "slint",
@@ -2562,7 +2556,7 @@ version = "0.7.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "46968d0e30e7753c3503248bc48b408f9cce2bfbaa522a33e13c9aafadc4ce43"
 dependencies = [
- "display-interface 0.4.1",
+ "display-interface",
  "embedded-graphics-core",
  "embedded-hal 0.2.7",
  "heapless",

@@ -1,17 +1,50 @@
 import { Button, VerticalBox } from "std-widgets.slint";
 
 export component AppWindow inherits Window {
-    in-out property <int> counter: 42;
-    callback request-increase-value();
-    VerticalBox {
-        Text {
-            text: "Counter: \{root.counter}";
+
+    callback key1-pressed;
+    in-out property <int> counter: 2;
+    forward-focus: handler;
+    handler := FocusScope {
+        key-pressed(k) => {
+            if (k.text == Key.F1 || k.repeat) {
+                counter = counter + 1;
+            }
+            if (k.text == Key.F2 || k.repeat) {
+                counter = 0;
+            }
+            if (k.text == Key.F3 || k.repeat) {
+                counter = counter - 1;
+            }
+            if (k.text == Key.UpArrow || k.repeat) {
+                rect.y = max(0px, rect.y - counter * 1px);
+            }
+            if (k.text == Key.DownArrow || k.repeat) {
+                rect.y = min(parent.height - rect.height, rect.y + counter * 1px);
+            }
+            if (k.text == Key.LeftArrow || k.repeat) {
+                rect.x = max(0px, rect.x - counter * 1px);
+            }
+            if (k.text == Key.RightArrow || k.repeat) {
+                rect.x = min(parent.width - rect.width, rect.x + counter * 1px);
+            }
+            accept
         }
 
-        Button {
-            text: "Increase value";
-            clicked => {
-                root.request-increase-value();
+        rect := Rectangle {
+            x: 0px;
+            y: 0px;
+            width: 40px;
+            height: 40px;
+            background: blue;
+            animate x, y {
+                duration: 100ms;
+                easing: ease-in-out;
+            }
+            Text {
+                text: "\{root.counter}";
+                color: white;
+                font-size: 20px;
             }
         }
     }
